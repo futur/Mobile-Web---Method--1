@@ -1,0 +1,36 @@
+
+.cbp-pgcontent h4 {
+color: #222;
+text-align:center;
+font-size: 12px;
+}
+.cbp-pgcontent h2 {
+line-height: 35px;
+color: #222;
+margin-top: 0px;
+font-weight: 300;
+text-align:center;
+font-size: 18px;
+}
+
+p {
+font-family: inherit;
+font-weight: normal;
+font-size: 14px;
+line-height: 1.6;
+margin-bottom: 17px;
+}
+
+.list-holder{
+list-style: none;
+}
+
+.list-holder li{
+display: inline;
+padding-left: 5px;
+}
+
+.clicked {
+background-color: orange;
+}
+

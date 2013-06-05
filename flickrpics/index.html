@@ -1,0 +1,110 @@
+<!doctype html>
+<html ng-app="Flickr">
+
+<head>	
+	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/offcanvas.css">
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<link rel="stylesheet" href="stylesheets/component.css">	
+
+	<script src="js/foundation/modernizr.foundation.js"></script>
+</head>
+
+  <body id="page" class="off-canvas">
+	<div class="container" ng-controller="FlickrCtrl">
+
+		<header id="header" class="row">
+		  <div class="four columns phone-two">
+		    <h1 id="site-title"><a href="#">FlickrPics</a></h1>
+		  </div>
+		  <div class="eight columns phone-two">
+		    <nav id="menu" role="navigation" class="hide-for-small">
+    			<ul id="nav" class="nav-bar">
+    				<li><a href="#" class="main">One</a></li>
+    				<li><a href="#" class="main">Two</a></li>
+    				<li><a href="#" class="main">Three</a></li>
+    				<li><a href="#" class="main">Four</a></li>
+    			</ul>
+    		</nav>
+  			<p class="show-for-small">
+  			  <a class='menu-button button' href="#bottomNav">Menu</a>
+  			  <a class='sidebar-button button' id='sidebarButton' href="#sidebar" >Extra</a>
+  			</p>
+		  </div>
+		</header>
+
+		<div class="row">
+  		<section role="main">
+			<h3>Tags</h3>
+			<div class="row">
+				<div class="twelve columns">
+					<div>
+						<ul class="list-holder">
+							<li ng-repeat="section in sections" ng-class="{clicked : isSelected(section)}">
+								<a ng-click="doSearch(section)">{{section.name}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="container">		
+						<div id="contacts">
+							<ul class="cbp-pggrid">
+								<li ng-repeat="photo in flickrResult.items">
+									<div class="cbp-pgcontent">				
+										<img src="{{ photo.media.m.replace('_m', '') }}" alt="{{ photo.title }}" class="photo"/>
+										<div>
+										<h4>{{ photo.title }}</h4>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+  		</section>
+
+  		<section id="sidebar" role="complementary">
+				<h4>What is Flickr?</h4>
+				<p>Flickr is almost certainly the best online photo management and sharing application in the world. On Flickr, members upload photos, share them securely, supplement their photos with metadata like license information, geo-location, people, tags, etc., and interact with their family, friends, contacts or anyone in the community. Practically all the features on Flickr's various platforms -- web, mobile and desktop -- are accompanied by a longstanding API program. Since 2005, developers have collaborated on top of Flickr's APIs to build fun, creative, and gorgeous experiences around photos that extend beyond Flickr.</p>
+  		</section>
+		</div>
+
+
+		<nav id="bottomMenu" role="navigation" class="show-for-small">
+			<ul id="bottomNav" class="nav-bar">
+				<li><a href="#page">One</a></li>
+				<li><a href="#page">Two</a></li>
+				<li><a href="#page">Three</a></li>
+				<li><a href="#page">Four</a></li>
+			</ul>
+		</nav>
+    <footer class="site-footer row" role="contentinfo">
+      <div class="twelve columns">
+        Created by ZURB for Foundation 3, based on code from Jason Weaver and Luke Wroblewski
+      </div>
+    </footer>
+  </div>
+
+  <!-- Included JS Files -->
+  <script src="js/foundation/jquery.js"></script>
+  <script src="js/foundation/jquery.foundation.reveal.js"></script>
+  <script src="js/foundation/jquery.foundation.orbit.js"></script>
+  <script src="js/foundation/jquery.foundation.forms.js"></script>
+  <script src="js/foundation/jquery.placeholder.js"></script>
+  <script src="js/foundation/jquery.foundation.tooltips.js"></script>
+  <script src="js/foundation/jquery.foundation.alerts.js"></script>
+  <script src="js/foundation/jquery.foundation.buttons.js"></script>
+  <script src="js/foundation/jquery.foundation.accordion.js"></script>
+  <script src="js/foundation/jquery.foundation.navigation.js"></script>
+  <script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="js/foundation/jquery.foundation.tabs.js"></script>
+  <script src="js/foundation/jquery.offcanvas.js"></script>
+  <script src="js/foundation/app.js"></script>
+  
+  <script src="js/angular.js"></script>
+  <script src="js/angular-resource.js"></script>
+  <script src="js/angular-cookies-1.0.0rc10.js"></script>
+  <script src="js/common.js"></script>
+
+</body>
+</html>
