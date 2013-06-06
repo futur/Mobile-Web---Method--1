@@ -1,0 +1,16 @@
+{
+	"name":"stcserver"
+	,"main":"server.js"
+	,"description":""
+	,"dependencies":{
+		"express":"latest"
+		,"http-proxy":"latest"
+	}
+	,"author":"futur"
+	,"version":"0.0.1"
+	, "contributors":[
+		{
+			"name":"srini"
+		}
+	]
+}
