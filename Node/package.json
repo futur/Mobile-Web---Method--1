@@ -1,14 +1,14 @@
 {
 	"name":"stcserver"
-	,"main":"server.js"
+	,"main":"main.js"
 	,"description":""
 	,"dependencies":{
 		"express":"latest"
 		,"http-proxy":"latest"
-		,"wurfl":"latest"
+		,"uglify-js":"latest"
 	}
-	,"author":"Futur - Srini"
-	,"version":"0.0.3"
+	,"author":"Prem Kumar - Srini"
+	,"version":"0.0.5"
 	, "contributors":[
 		{
 			"name":"srini"

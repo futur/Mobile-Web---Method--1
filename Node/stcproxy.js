@@ -1,26 +1,51 @@
 var http = require('http')
     ,httpProxy = require('http-proxy')
     ,url = require('url')
-    ,wurfl = require('wurfl')
-    ,path = require('path');
+    ,path = require('path')
+    ,wurfl_cloud_client = require("./WurflCloudClient/NodeWurflCloudClient/WurflCloudClient")
+	,config = require("./WurflCloudClient/NodeWurflCloudClient/Config");
 
-// var wurflFile = path.resolve(__dirname + '/wurfl.xml');
-var options = { file: path.resolve(__dirname + '/wurfl.xml')};
-console.log('laoding : ' + JSON.stringify(options));
-wurfl.loadSync(options);
-// wurfl.watch(options);
+var api_key = "125466:pz7ICr0xOhY3Be6b8HaluqygTtE9mwDM";
+var configuration = new config.WurflCloudConfig(api_key);
 
-console.log('WURFL XML Loaded Successfully');
 
-// var ua = 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; O2 Xda 2s;PPC;240x320; PPC; 240x320)';
-// var ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36';
-// console.log(wurfl.get(ua));
+var brand;
+var result_capabilities = {};
+var WURFLCloudClientObject;
+
+function WurflCloud(req,res,deviceParams,DetectionSuccess,DetectionFailure){
+	if (typeof WURFLCloudClientObject === 'undefined') {
+		console.log('first time init -- not required');
+	}
+	WURFLCloudClientObject = new wurfl_cloud_client.WurflCloudClient(configuration, req,res);
+    WURFLCloudClientObject.detectDevice(req, null, function(err, result_capabilities){
+    	for(var param in deviceParams){
+    		console.log('req param : '+ deviceParams[param]);
+    		WURFLCloudClientObject.getDeviceCapability(deviceParams[param], function(error, value){
+        if(error!=null){
+            DetectionFailure(error,deviceParams[param]);
+        }
+        else{
+            DetectionSuccess(value,deviceParams[param]);
+        }
+    });
+    	}
+	});
+}
 
 
 httpProxy.createServer(function (req, res, proxy) {
-	console.log(url.parse(req.url));
-	var devinfo = wurfl.get(req.headers['user-agent']);
-	console.log('device : %s for UA : %s', JSON.stringify(devinfo), req.headers['user-agent']);
+	// console.log(url.parse(req.url));
+	function DetectionSuccess(value,param){
+		console.log(param + ' : ' + value);
+	}
+	function DetectionFailure(error,param){
+		console.log('Error' + error);
+	}
+	WurflCloud(req,res,['brand_name','resolution_width'],DetectionSuccess,DetectionFailure);
+	// var devinfo = wurfl.get(req.headers['user-agent']);
+	console.log(req.headers['user-agent']);
+  	
   	proxy.proxyRequest(req, res, {
     host: 'localhost',
     port: 3000

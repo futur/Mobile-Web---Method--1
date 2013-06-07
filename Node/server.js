@@ -2,9 +2,10 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-console.log(path.resolve(__dirname + '/../flickrpics/'));
+console.log(path.resolve(__dirname + '/flickrpics/'));
 app.enable('trust proxy');
-app.use(express.static(path.resolve(__dirname + '/../flickrpics/')));
+
+app.use(express.static(path.resolve(__dirname + '/flickrpics/')));
 
 app.use(function(req,res,next){
 	console.log('%s %s',req.method,req.url);
