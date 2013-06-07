@@ -1,0 +1,6 @@
+This is a simple express based server with http-proxy middleware by Nodejitsu guys !. thanks to both the communities.
+
+This server will feed the static files based on incoming request. the request can be from mobile device, with respect to the form factor pages will be 
+served to the client.
+
+Thank you.

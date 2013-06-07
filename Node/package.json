@@ -5,12 +5,17 @@
 	,"dependencies":{
 		"express":"latest"
 		,"http-proxy":"latest"
+		,"wurfl":"latest"
 	}
-	,"author":"futur"
-	,"version":"0.0.1"
+	,"author":"Futur - Srini"
+	,"version":"0.0.3"
 	, "contributors":[
 		{
 			"name":"srini"
 		}
 	]
+	,"repository":{
+		"type":"git"
+		,"url":"https://github.com/futur/Mobile-Web---Method--1.git"
+	}
 }
