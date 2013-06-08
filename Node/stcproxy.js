@@ -48,6 +48,6 @@ httpProxy.createServer(function (req, res, proxy) {
   	
   	proxy.proxyRequest(req, res, {
     host: 'localhost',
-    port: 3000
+    port: 12000
   });
-}).listen(8000);
+}).listen(process.env.port || 11000);
